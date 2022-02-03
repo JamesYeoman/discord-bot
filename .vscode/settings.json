@@ -1,0 +1,17 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "typescript"],
+  "files.eol": "\n",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true
+  },
+  "[typescript][javascript][json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"],
+  "rust-analyzer.hoverActions.debug": false,
+  "rust-analyzer.diagnostics.enableExperimental": false,
+  "rust-analyzer.cargo.allFeatures": true
+}
