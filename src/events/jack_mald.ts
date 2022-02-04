@@ -1,7 +1,13 @@
 import { Mutex } from 'async-mutex';
 import { Message } from 'discord.js';
 import { logger } from '../main';
-import { getAuthorID, people, randomNum, getQuotedMessage } from '../utils';
+import {
+  getAuthorID,
+  people,
+  randomNum,
+  getQuotedMessage,
+  boolifyString,
+} from '../utils';
 import { EventType } from './index';
 
 const maldGif = 'https://tenor.com/view/jack-jack-malding-angry-ginger-rant-gif-22379466';
@@ -16,19 +22,13 @@ const getRepliedMsg = async (message: Message) => {
 };
 
 const isAuthorMe = async (message: Message) => {
-  if (!message.author.tag || message.author.tag.length === 0) {
+  if (!boolifyString(message.author.tag)) {
     throw 'Dafuq? No author tag?';
   }
 
   if (getAuthorID(message) !== people.james_me) {
     throw false;
   }
-};
-
-const maldedToday = () => lastMalded === new Date().toDateString();
-const shouldMald = async () => {
-  const malded = await maldMutex.waitForUnlock().then(maldedToday);
-  return malded || randomNum(20) < 10;
 };
 
 const event: EventType<'messageCreate'> = {
@@ -38,9 +38,9 @@ const event: EventType<'messageCreate'> = {
     try {
       const orig = await getRepliedMsg(message);
       const today = await isAuthorMe(orig).then(() => new Date().toDateString());
-      const should = await shouldMald();
+      const malded = await maldMutex.waitForUnlock().then(() => lastMalded === today);
 
-      if (should) {
+      if (malded || randomNum(20) < 10) {
         await message.reply(maldGif).then(() => logger.info('Jack has been malded!'));
         await message.channel.send('Better luck next time, bruh');
         await maldMutex.acquire().then((release) => {

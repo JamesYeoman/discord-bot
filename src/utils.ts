@@ -21,3 +21,5 @@ export const getQuotedMessage = async (msg: Message) => {
 
   return await msg.channel.messages.fetch(msg.reference.messageId);
 };
+
+export const boolifyString = (str: string) => !!str && str.length !== 0;
