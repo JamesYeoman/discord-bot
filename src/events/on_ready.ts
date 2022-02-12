@@ -1,5 +1,5 @@
-import { EventType } from 'src/events';
-import { logger } from 'src/main';
+import { EventType } from '../events';
+import { logger } from '../main';
 
 const event: EventType<'ready'> = {
   name: 'ready',

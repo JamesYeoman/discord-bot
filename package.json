@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/bot.ts",
+    "start": "ts-node src/main.ts",
     "lint": "eslint . --ext .ts",
     "tsc": "tsc"
   },

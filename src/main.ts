@@ -9,7 +9,10 @@ export const logger = pino(
     targets: [
       {
         target: 'pino/file',
-        options: { destination: '/home/debian/logs/discordbot.json' },
+        options: { 
+          // destination: '/home/debian/logs/discordbot.json'
+          destination: './discordbot.json'
+        },
         level: 'trace',
       },
       { target: 'pino-pretty', options: { destination: 1 }, level: 'trace' },
