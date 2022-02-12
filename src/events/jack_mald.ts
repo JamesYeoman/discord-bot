@@ -5,8 +5,6 @@ import {
   getAuthorID,
   people,
   randomNum,
-  getQuotedMessage,
-  boolifyString,
 } from '../utils';
 import { EventType } from './index';
 
@@ -15,13 +13,11 @@ const maldMutex = new Mutex();
 let lastMalded = 'never';
 
 const shouldMald = (malded: boolean) => {
-  // if (malded) {
-  //   return false;
-  // }
+  if (malded) {
+    return false;
+  }
 
-  // return randomNum(20) >= 10
-
-  return true;
+  return randomNum(20) >= 10
 }
 
 const event: EventType<'messageCreate'> = {
