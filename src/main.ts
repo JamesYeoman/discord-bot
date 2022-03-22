@@ -10,7 +10,7 @@ export const logger = pino(
       {
         target: 'pino/file',
         options: {
-          destination: `${__dirname}/logs/discordbot.json`,
+          destination: `./logs/discordbot.json`,
         },
         level: 'trace',
       },
@@ -33,5 +33,5 @@ for (const event of events) {
   }
 }
 
-const conf = readFileSync(`${__dirname}/config.json`, 'utf-8');
+const conf = readFileSync(`./config.json`, 'utf-8');
 client.login(JSON.parse(conf).token);

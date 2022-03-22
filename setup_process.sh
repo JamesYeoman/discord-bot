@@ -58,5 +58,9 @@ if ! nodenv which pm2 &> /dev/null; then
 fi
 
 echo "Registering PM2 services"
+
+rm -rf dist
+yarn run tsc
+
 pm2 start
 pm2 startup
