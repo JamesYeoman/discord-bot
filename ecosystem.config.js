@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'discordbot',
-      script: './dist/main.js',
+      script: '/home/debian/discord-bot/dist/main.js',
     },
   ],
 };

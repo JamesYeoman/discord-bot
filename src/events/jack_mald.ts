@@ -17,7 +17,8 @@ const shouldMald = (malded: boolean) => {
     return false;
   }
 
-  return randomNum(20) >= 10
+  // Random number between 0 and 1
+  return Math.random() > 0.99
 }
 
 const event: EventType<'messageCreate'> = {

@@ -160,3 +160,9 @@ dist
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/node,yarn
+
+# Discord bot log
+discordbot.json
+
+# Discord API config file
+config.json
