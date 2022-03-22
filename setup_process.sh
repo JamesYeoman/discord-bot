@@ -11,34 +11,50 @@ if [[ ! -f "/etc/logrotate.d/discordbot.conf" ]]; then
 fi
 
 
-if ! command -v volta &> /dev/null; then
-    if [[ ! -d "${HOME}/.volta" ]]; then
-        echo "Volta not installed! Installing volta!"
-        curl https://get.volta.sh | bash
+if ! command -v nodenv &> /dev/null; then
+    if [[ -d "${HOME}/.nodenv" ]]; then
+        echo "Nodenv exists on system, but not setup in shell!"
+        echo "Will do a temporary workaround, but it's recommended to properly"
+        echo "setup nodenv!"
+    else
+        echo "Nodenv not installed! Installing Nodenv!"
+        git clone https://github.com/nodenv/nodenv.git "${HOME}/.nodenv"
+        pushd "${HOME}/.nodenv" && src/configure && make -C src
+        popd
+        echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.bashrc
+        mkdir -p "$(nodenv root)"/plugins
+        git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
     fi
 
-    if [[ "${VOLTA_HOME:-unset}" == "unset" ]]; then
-        export VOLTA_HOME="${HOME}/.volta"
+
+    if [[ "${NODENV_HOME:-unset}" == "unset" ]]; then
+        export NODENV_HOME="${HOME}/.nodenv"
     fi
 
-    export PATH="${VOLTA_HOME}/bin:$PATH"
+    export PATH="${NODENV_HOME}/bin:$PATH"
+
+    eval "$(nodenv init -)"
 fi
 
-if [[ ! -f "${VOLTA_HOME}/bin/yarn" ]]; then
+if nodenv which node | grep 'is not installed' &>/dev/null; then
+    echo "The repo's node version is not installed!"
+    echo "Installing..."
+    nodenv install
+fi
+
+if ! nodenv which yarn &> /dev/null; then
     echo "Yarn not installed! Installing Yarn!"
+    npm install -g yarn
+    nodenv rehash
 
-    if [[ ! -f "${VOLTA_HOME}/bin/node" ]]; then
-        echo "Installing NodeJS"
-        volta install node
-    fi
+    echo "You should run `yarn install` now, before starting this script again!"
+    exit 1
 fi
 
-echo "Installing Yarn"
-volta install yarn
-
-if [[ ! -f "${VOLTA_HOME}/bin/pm2" ]]; then
+if ! nodenv which pm2 &> /dev/null; then
     echo "Installing PM2"
-    yarn global add pm2
+    npm install -g pm2
+    nodenv rehash
 fi
 
 echo "Registering PM2 services"
