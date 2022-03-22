@@ -1,25 +1,14 @@
-import { Mutex } from 'async-mutex';
 import { Message } from 'discord.js';
 import { logger } from '../main';
-import {
-  getAuthorID,
-  people,
-  randomNum,
-} from '../utils';
+import { getAuthorID, people } from '../utils';
 import { EventType } from './index';
 
 const maldGif = 'https://tenor.com/view/jack-jack-malding-angry-ginger-rant-gif-22379466';
-const maldMutex = new Mutex();
-let lastMalded = 'never';
 
-const shouldMald = (malded: boolean) => {
-  if (malded) {
-    return false;
-  }
-
+const shouldMald = () => {
   // Random number between 0 and 1
-  return Math.random() > 0.99
-}
+  return Math.random() > 0.99;
+};
 
 const event: EventType<'messageCreate'> = {
   name: 'messageCreate',
@@ -29,33 +18,21 @@ const event: EventType<'messageCreate'> = {
       return;
     }
 
-    if (message.reference == null) {
+    if (!message.reference?.messageId) {
       return;
     }
 
-    const ref = message.reference;
-
-    if (!ref.messageId) {
-      return
-    }
-
     try {
-      const orig = await message.channel.messages.fetch(ref.messageId);
+      const orig = await message.channel.messages.fetch(message.reference.messageId);
       if (getAuthorID(orig) !== people.james_me) {
         return;
       }
 
-      const today = new Date().toDateString();
-      const malded = await maldMutex.waitForUnlock().then(() => lastMalded === today);
-      if (shouldMald(malded)) {
+      if (shouldMald()) {
         await message.reply(maldGif);
         logger.info('Jack has been malded!');
 
         await message.channel.send('Better luck next time, bruh');
-        await maldMutex.acquire().then((release) => {
-          lastMalded = today;
-          release();
-        });
       }
     } catch (e) {
       if (e) {
