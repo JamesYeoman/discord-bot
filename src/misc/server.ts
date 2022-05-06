@@ -19,12 +19,14 @@ const handler =
     if (!req.url || !req.headers.host) {
       logger.error('Request object is badly formed!');
       res.statusCode = 500;
+      res.end('Unknown error!');
       return;
     }
 
     const path = new URL(req.url, `http://${req.headers.host}`);
-    let fn: routeHandler;
+    logger.info(`Received a request for ${path.pathname}`);
 
+    let fn: routeHandler;
     switch (path.pathname) {
       case '/memes/california':
         fn = california;
@@ -32,6 +34,7 @@ const handler =
       default:
         logger.info(`Unknown route: ${path.pathname}`);
         res.statusCode = 404;
+        res.end(`Bad route: ${path.pathname}`);
         return;
     }
 
@@ -39,9 +42,11 @@ const handler =
       .then(() => {
         logger.info(`Finished ${path.pathname} route`);
         res.statusCode = 200;
+        res.end('Success');
       })
       .catch((err) => {
         logger.error(err, `Error while handling ${path.pathname}`);
+        res.end('Error');
       });
   };
 

@@ -40,7 +40,5 @@ for (const event of events) {
 const server = http.createServer(handler(client));
 server.listen(8080, () => {
   const conf = readFileSync(`./config.json`, 'utf-8');
-  client.login(JSON.parse(conf).token).then((s) => {
-    logger.info(s, 'odd string');
-  });
+  client.login(JSON.parse(conf).token);
 });
