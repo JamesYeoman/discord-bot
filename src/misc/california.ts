@@ -1,6 +1,6 @@
 import { Client } from 'discord.js';
 import { IncomingMessage as IM, ServerResponse as SR } from 'http';
-import { getTextChannelById } from 'src/utils';
+import { getTextChannelById } from '../utils';
 import { vlcMediaPlayer } from './constants';
 
 const californiaMp4 =
