@@ -2,6 +2,8 @@ import { Client } from 'discord.js';
 import pino from 'pino';
 import { readFileSync } from 'fs';
 import events from './events';
+import http from 'http';
+import handler from './misc/server';
 
 export const logger = pino(
   { name: 'Discord Bot', timestamp: true },
@@ -35,3 +37,6 @@ for (const event of events) {
 
 const conf = readFileSync(`./config.json`, 'utf-8');
 client.login(JSON.parse(conf).token);
+
+const server = http.createServer(handler(client));
+server.listen(8080);
