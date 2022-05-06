@@ -1,10 +1,15 @@
 {
   "editor.formatOnSave": true,
+  "eslint.enable": true,
   "eslint.validate": ["javascript", "typescript"],
+  "eslint.run": "onSave",
+  "eslint.probe": ["javascript", "typescript"],
+  "eslint.packageManager": "yarn",
   "files.eol": "\n",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
   "[typescript][javascript][json]": {

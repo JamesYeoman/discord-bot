@@ -1,8 +1,10 @@
+import { readFileSync } from 'fs';
+import http from 'http';
+
 import { Client } from 'discord.js';
 import pino from 'pino';
-import { readFileSync } from 'fs';
+
 import events from './events';
-import http from 'http';
 import handler from './misc/server';
 
 export const logger = pino(

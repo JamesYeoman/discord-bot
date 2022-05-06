@@ -1,8 +1,11 @@
-import type { RequestListener } from 'http';
 import { IncomingMessage, ServerResponse } from 'http';
+
+import type { RequestListener } from 'http';
+
 import { Client } from 'discord.js';
-import { california } from './california';
+
 import { logger } from '../main';
+import { california } from './california';
 
 type routeHandler = (
   client: Client,

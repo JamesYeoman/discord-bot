@@ -1,4 +1,5 @@
 import { Message } from 'discord.js';
+
 import { logger } from '../main';
 import { getAuthorID, people } from '../utils';
 import { EventType } from './index';

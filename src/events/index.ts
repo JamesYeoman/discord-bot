@@ -1,4 +1,5 @@
 import { Awaitable, ClientEvents } from 'discord.js';
+
 import jack_mald from './jack_mald';
 import ready from './on_ready';
 
