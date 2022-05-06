@@ -14,6 +14,8 @@ const handler =
   (client: Client): RequestListener =>
   (req, res) => {
     if (!req.url || !req.headers.host) {
+      logger.error('Request object is badly formed!');
+      res.statusCode = 500;
       return;
     }
 
@@ -25,13 +27,15 @@ const handler =
         fn = california;
         break;
       default:
-        logger.debug(`Unknown route: ${path.pathname}`);
+        logger.info(`Unknown route: ${path.pathname}`);
+        res.statusCode = 404;
         return;
     }
 
     fn(client, req, res)
       .then(() => {
-        logger.debug(`Finished ${path.pathname} route`);
+        logger.info(`Finished ${path.pathname} route`);
+        res.statusCode = 200;
       })
       .catch((err) => {
         logger.error(err, `Error while handling ${path.pathname}`);
