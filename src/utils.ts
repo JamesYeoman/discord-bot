@@ -1,7 +1,5 @@
 import { Client, Message, MessageManager, MessageReference } from 'discord.js';
 
-import { logger } from './main';
-
 export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 
 export const getAuthorID = (msg: Message) => {

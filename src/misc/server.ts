@@ -3,6 +3,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import type { RequestListener } from 'http';
 
 import { Client } from 'discord.js';
+import { wishBirthday } from 'src/misc/bday';
 
 import { logger } from '../main';
 import { california } from './california';
@@ -31,6 +32,8 @@ const handler =
       case '/memes/california':
         fn = california;
         break;
+      case '/bday/http501':
+        fn = wishBirthday('HTTP-501#4329');
       default:
         logger.info(`Unknown route: ${path.pathname}`);
         res.statusCode = 404;
