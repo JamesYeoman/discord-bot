@@ -34,6 +34,7 @@ const handler =
         break;
       case '/bday/http501':
         fn = wishBirthday('HTTP-501#4329');
+        break;
       default:
         logger.info(`Unknown route: ${path.pathname}`);
         res.statusCode = 404;
