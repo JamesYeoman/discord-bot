@@ -3,9 +3,9 @@ import { IncomingMessage, ServerResponse } from 'http';
 import type { RequestListener } from 'http';
 
 import { Client } from 'discord.js';
-import { wishBirthday } from 'src/misc/bday';
 
 import { logger } from '../main';
+import { wishBirthday } from './bday';
 import { california } from './california';
 
 type routeHandler = (
