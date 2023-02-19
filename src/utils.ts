@@ -1,4 +1,5 @@
 import { Client, Message, MessageManager, MessageReference } from 'discord.js';
+import { vlcMediaPlayer } from 'src/misc/constants';
 
 export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 
@@ -42,3 +43,9 @@ export const getTextChannelById = async (client: Client, channel: channelInfo) =
 
   return maybeChannel;
 };
+
+export const getHentaiThread = (client: Client) =>
+  getTextChannelById(client, {
+    id: vlcMediaPlayer.channelId,
+    name: 'hentai-thread',
+  });

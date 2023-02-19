@@ -1,18 +1,11 @@
-import { IncomingMessage as IM, ServerResponse as SR } from 'http';
+import { RequestHandler } from 'src/types';
 
-import { Client } from 'discord.js';
-
-import { getTextChannelById } from '../utils';
-import { vlcMediaPlayer } from './constants';
+import { getHentaiThread } from '../utils';
 
 const californiaMp4 =
-  'https://cdn.discordapp.com/attachments/244558372001677312/972100790388944946/today_is_friday_in_california.mp4';
+  'https://cdn.discordapp.com/attachments/1076878871980425256/1076879247232209006/today_is_friday_in_california.mp4';
 
-export const california = async (client: Client, req: IM, res: SR) => {
-  const hentaiThread = await getTextChannelById(client, {
-    id: vlcMediaPlayer.channelId,
-    name: 'hentai-thread',
-  });
-
-  hentaiThread.send(californiaMp4);
+export const california: RequestHandler = async (client) => {
+  const hentaiThread = await getHentaiThread(client);
+  await hentaiThread.send(californiaMp4);
 };
