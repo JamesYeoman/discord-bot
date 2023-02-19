@@ -35,6 +35,7 @@ const handler =
         break;
       case '/memes/oot':
         fn = oot;
+        break;
       case '/bday/http501':
         fn = wishBirthday('HTTP-501#4329');
         break;
