@@ -3,6 +3,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 import type { RequestListener } from 'http';
 
 import { Client } from 'discord.js';
+import { oot } from 'src/misc/out_of_touch';
 
 import { logger } from '../main';
 import { wishBirthday } from './bday';
@@ -32,6 +33,8 @@ const handler =
       case '/memes/california':
         fn = california;
         break;
+      case '/memes/oot':
+        fn = oot;
       case '/bday/http501':
         fn = wishBirthday('HTTP-501#4329');
         break;
