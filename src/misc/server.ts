@@ -3,11 +3,11 @@ import { IncomingMessage, ServerResponse } from 'http';
 import type { RequestListener } from 'http';
 
 import { Client } from 'discord.js';
-import { oot } from 'src/misc/out_of_touch';
 
 import { logger } from '../main';
 import { wishBirthday } from './bday';
 import { california } from './california';
+import { oot } from './out_of_touch';
 
 type routeHandler = (
   client: Client,

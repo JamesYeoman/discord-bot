@@ -1,5 +1,5 @@
-import { RequestHandler } from 'src/types';
-import { getHentaiThread } from 'src/utils';
+import { RequestHandler } from '../types';
+import { getHentaiThread } from '../utils';
 
 const mp4 =
   'https://cdn.discordapp.com/attachments/1076878871980425256/1076878934114832384/out_of_touch.mp4';

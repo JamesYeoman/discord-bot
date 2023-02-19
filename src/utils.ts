@@ -1,5 +1,6 @@
 import { Client, Message, MessageManager, MessageReference } from 'discord.js';
-import { vlcMediaPlayer } from 'src/misc/constants';
+
+import { vlcMediaPlayer } from './misc/constants';
 
 export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 

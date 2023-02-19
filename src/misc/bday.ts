@@ -2,7 +2,7 @@ import { IncomingMessage as IM, ServerResponse as SR } from 'http';
 
 import { Client } from 'discord.js';
 
-import { getTextChannelById, people } from '../utils';
+import { getTextChannelById } from '../utils';
 import { vlcMediaPlayer } from './constants';
 
 export const wishBirthday =
