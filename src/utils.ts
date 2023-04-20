@@ -1,6 +1,6 @@
 import { Client, Message, MessageManager, MessageReference } from 'discord.js';
 
-import { vlcMediaPlayer } from './misc/constants';
+import { vlcmediaplayer as vlc } from './discord_ids.json';
 
 export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 
@@ -11,7 +11,7 @@ export const getAuthorID = (msg: Message) => {
 
 export const people = {
   james_me: 4329,
-  garbung: 1748,
+  jack: 1748,
   jess: 9543,
 };
 
@@ -45,8 +45,14 @@ export const getTextChannelById = async (client: Client, channel: channelInfo) =
   return maybeChannel;
 };
 
+export const vlcMediaPlayer = {
+  id: vlc.channel.default.id,
+  name: vlc.channel.default.name,
+  guild: vlc.guild,
+};
+
 export const getHentaiThread = (client: Client) =>
   getTextChannelById(client, {
-    id: vlcMediaPlayer.channelId,
-    name: 'hentai-thread',
+    id: vlcMediaPlayer.id,
+    name: vlcMediaPlayer.name,
   });

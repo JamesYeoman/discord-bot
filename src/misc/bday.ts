@@ -2,17 +2,16 @@ import { IncomingMessage as IM, ServerResponse as SR } from 'http';
 
 import { Client } from 'discord.js';
 
-import { getTextChannelById } from '../utils';
-import { vlcMediaPlayer } from './constants';
+import { getTextChannelById, vlcMediaPlayer } from '../utils';
 
 export const wishBirthday =
   (userID: string) => async (client: Client, req: IM, res: SR) => {
     const hentaiThread = await getTextChannelById(client, {
-      id: vlcMediaPlayer.channelId,
-      name: 'hentai-thread',
+      id: vlcMediaPlayer.id,
+      name: vlcMediaPlayer.name,
     });
 
-    const guild = client.guilds.cache.get(vlcMediaPlayer.guildId);
+    const guild = client.guilds.cache.get(vlcMediaPlayer.guild);
     if (!guild) {
       throw new Error('Could not get the vlc media player guild');
     }

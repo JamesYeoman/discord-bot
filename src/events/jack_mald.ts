@@ -8,14 +8,14 @@ const maldGif = 'https://tenor.com/view/jack-jack-malding-angry-ginger-rant-gif-
 
 const shouldMald = () => {
   // Random number between 0 and 1
-  return Math.random() > 0.99;
+  return Math.random() > 0.7;
 };
 
 const event: EventType<'messageCreate'> = {
   name: 'messageCreate',
   once: false,
   execute: async (message: Message) => {
-    if (getAuthorID(message) !== people.garbung) {
+    if (getAuthorID(message) !== people.jack) {
       return;
     }
 
