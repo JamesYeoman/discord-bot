@@ -1,6 +1,6 @@
 import { Client, Message, MessageManager, MessageReference } from 'discord.js';
 
-import { vlcmediaplayer as vlc } from './discord_ids.json';
+import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
 
 export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 
@@ -51,8 +51,20 @@ export const vlcMediaPlayer = {
   guild: vlc.guild,
 };
 
+export const fatAndOrDangerous = {
+  id: faod.channel.default.id,
+  name: faod.channel.default.name,
+  guild: faod.guild,
+};
+
 export const getHentaiThread = (client: Client) =>
   getTextChannelById(client, {
     id: vlcMediaPlayer.id,
     name: vlcMediaPlayer.name,
+  });
+
+export const getTestChannel = (client: Client) =>
+  getTextChannelById(client, {
+    id: fatAndOrDangerous.id,
+    name: fatAndOrDangerous.name,
   });
