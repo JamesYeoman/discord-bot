@@ -8,6 +8,7 @@ import { logger } from '../main';
 import { wishBirthday } from './bday';
 import { california } from './california';
 import { oot } from './out_of_touch';
+import { september } from './september';
 
 type routeHandler = (
   client: Client,
@@ -35,6 +36,9 @@ const handler =
         break;
       case '/memes/oot':
         fn = oot;
+        break;
+      case '/memes/september':
+        fn = september;
         break;
       case '/bday/http501':
         fn = wishBirthday('HTTP-501#4329');
