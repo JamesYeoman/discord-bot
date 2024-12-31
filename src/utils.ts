@@ -1,4 +1,6 @@
-import { ChannelType, Client } from 'discord.js';
+import type { Client } from 'discord.js';
+
+import { ChannelType } from 'discord.js';
 
 import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
 

@@ -1,19 +1,11 @@
-import { IncomingMessage, ServerResponse } from 'http';
-
+import type { RequestHandler } from '../types';
+import type { Client } from 'discord.js';
 import type { RequestListener } from 'http';
-
-import { Client } from 'discord.js';
 
 import { wishBirthday } from './bday';
 import { california } from './california';
 import { oot } from './out_of_touch';
 import { september } from './september';
-
-type routeHandler = (
-  client: Client,
-  req: IncomingMessage,
-  res: ServerResponse,
-) => Promise<void>;
 
 const handler =
   (client: Client): RequestListener =>
@@ -28,7 +20,7 @@ const handler =
     const path = new URL(req.url, `http://${req.headers.host}`);
     console.info(`Received a request for ${path.pathname}`);
 
-    let fn: routeHandler;
+    let fn: RequestHandler;
     switch (path.pathname) {
       case '/memes/california':
         fn = california;

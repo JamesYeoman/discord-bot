@@ -1,4 +1,5 @@
-import { RequestHandler } from '../types';
+import type { RequestHandler } from '../types';
+
 import { getHentaiThread } from '../utils';
 
 const californiaMp4 =

@@ -1,11 +1,10 @@
-import { IncomingMessage as IM, ServerResponse as SR } from 'http';
-
-import { Client } from 'discord.js';
+import type { RequestHandler } from '../types';
 
 import { getTextChannelById, vlcMediaPlayer } from '../utils';
 
 export const wishBirthday =
-  (userID: string) => async (client: Client, req: IM, res: SR) => {
+  (userID: string): RequestHandler =>
+  async (client) => {
     const hentaiThread = await getTextChannelById(client, {
       id: vlcMediaPlayer.id,
       name: vlcMediaPlayer.name,
