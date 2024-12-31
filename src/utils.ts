@@ -4,8 +4,12 @@ import { ChannelType } from 'discord.js';
 
 import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
 
+export const idDict = {
+  http501: '153948164670357504',
+};
+
 type channelInfo = { id: string; name: string };
-export const getTextChannelById = async (client: Client, channel: channelInfo) => {
+const getTextChannelById = async (client: Client, channel: channelInfo) => {
   const maybeChannel = await client.channels.fetch(channel.id);
   if (!maybeChannel) {
     throw `${channel.id} does not exist!`;

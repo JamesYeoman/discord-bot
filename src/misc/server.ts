@@ -2,6 +2,7 @@ import type { RequestHandler } from '../types';
 import type { Client } from 'discord.js';
 import type { RequestListener } from 'http';
 
+import { idDict } from '../utils';
 import { wishBirthday } from './bday';
 import { california } from './california';
 import { oot } from './out_of_touch';
@@ -32,7 +33,7 @@ const handler =
         fn = september;
         break;
       case '/bday/http501':
-        fn = wishBirthday('HTTP-501#4329');
+        fn = wishBirthday(idDict.http501);
         break;
       default:
         console.info(`Unknown route: ${path.pathname}`);
