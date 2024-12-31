@@ -1,5 +1,3 @@
-import { Message } from 'discord.js';
-
 import { logger } from '../main';
 import { getAuthorID, people } from '../utils';
 import { EventType } from './index';
@@ -14,7 +12,7 @@ const shouldMald = () => {
 const event: EventType<'messageCreate'> = {
   name: 'messageCreate',
   once: false,
-  execute: async (message: Message) => {
+  execute: async (message) => {
     if (getAuthorID(message) !== people.jack) {
       return;
     }

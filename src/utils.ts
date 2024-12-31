@@ -1,4 +1,10 @@
-import { Client, Message, MessageManager, MessageReference } from 'discord.js';
+import {
+  ChannelType,
+  Client,
+  Message,
+  MessageManager,
+  MessageReference,
+} from 'discord.js';
 
 import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
 
@@ -34,7 +40,7 @@ export const getTextChannelById = async (client: Client, channel: channelInfo) =
     throw `${channel.id} does not exist!`;
   }
 
-  if (maybeChannel.type !== 'GUILD_TEXT') {
+  if (maybeChannel.type !== ChannelType.GuildText) {
     throw `${channel.id} is not a text channel!`;
   }
 

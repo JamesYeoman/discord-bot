@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import http from 'http';
 
-import { Client } from 'discord.js';
+import { Client, GatewayIntentBits, Partials } from 'discord.js';
 import pino from 'pino';
 
 import events from './events';
@@ -25,8 +25,12 @@ export const logger = pino(
 
 logger.info('Bot is starting...');
 const client = new Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'],
-  partials: ['MESSAGE', 'CHANNEL'],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,
+  ],
+  partials: [Partials.Message, Partials.Channel],
 });
 
 for (const event of events) {
