@@ -1,14 +1,6 @@
-import {
-  ChannelType,
-  Client,
-  Message,
-  MessageManager,
-  MessageReference,
-} from 'discord.js';
+import { ChannelType, Client, Message } from 'discord.js';
 
 import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
-
-export const prettyPrintJson = <T>(obj: T) => JSON.stringify(obj, null, 2);
 
 export const getAuthorID = (msg: Message) => {
   const tag = msg.author.tag;
@@ -20,18 +12,6 @@ export const people = {
   jack: 1748,
   jess: 9543,
 };
-
-export const randomNum = (size: number) => Math.floor(Math.random() * size);
-
-export const getQuotedMessage = async (ref: MessageReference, mgr: MessageManager) => {
-  if (!ref.messageId) {
-    throw 'No reference message ID';
-  }
-
-  return await mgr.fetch(ref.messageId);
-};
-
-export const boolifyString = (str: string) => !!str && str.length !== 0;
 
 type channelInfo = { id: string; name: string };
 export const getTextChannelById = async (client: Client, channel: channelInfo) => {
