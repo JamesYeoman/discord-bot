@@ -1,17 +1,6 @@
-import { ChannelType, Client, Message } from 'discord.js';
+import { ChannelType, Client } from 'discord.js';
 
 import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
-
-export const getAuthorID = (msg: Message) => {
-  const tag = msg.author.tag;
-  return Number.parseInt(tag.split('#')[1]);
-};
-
-export const people = {
-  james_me: 4329,
-  jack: 1748,
-  jess: 9543,
-};
 
 type channelInfo = { id: string; name: string };
 export const getTextChannelById = async (client: Client, channel: channelInfo) => {
