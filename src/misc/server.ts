@@ -4,9 +4,22 @@ import type { RequestListener } from 'http';
 
 import { idDict } from '../utils';
 import { wishBirthday } from './bday';
-import { california } from './california';
-import { oot } from './out_of_touch';
-import { september } from './september';
+import { sendMeme } from './sendMeme';
+
+const MEME_CACHE_CHANNEL = 'https://cdn.discordapp.com/attachments/1076878871980425256';
+const memePayloads = {
+  california: {
+    media: `${MEME_CACHE_CHANNEL}/1076879247232209006/today_is_friday_in_california.mp4`,
+  },
+  oot: {
+    caption: 'Happy Out Of Touch Thursday',
+    media: `${MEME_CACHE_CHANNEL}/1076878934114832384/out_of_touch.mp4`,
+  },
+  september: {
+    caption: 'Do you remember? The 21st night of September?',
+    media: 'https://www.youtube.com/watch?v=3RcGCRTD7sA',
+  },
+};
 
 const handler =
   (client: Client): RequestListener =>
@@ -24,13 +37,13 @@ const handler =
     let fn: RequestHandler;
     switch (path.pathname) {
       case '/memes/california':
-        fn = california;
+        fn = sendMeme(memePayloads.california);
         break;
       case '/memes/oot':
-        fn = oot;
+        fn = sendMeme(memePayloads.oot);
         break;
       case '/memes/september':
-        fn = september;
+        fn = sendMeme(memePayloads.september);
         break;
       case '/bday/http501':
         fn = wishBirthday(idDict.http501);
