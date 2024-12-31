@@ -19,6 +19,10 @@ const memePayloads = {
     caption: 'Do you remember? The 21st night of September?',
     media: 'https://www.youtube.com/watch?v=3RcGCRTD7sA',
   },
+  wgw: {
+    caption: 'White Girl Wednesday',
+    media: 'https://tenor.com/view/ookami-mio-meme-gif-24268471',
+  },
 };
 
 const handler =
@@ -44,6 +48,9 @@ const handler =
         break;
       case '/memes/september':
         fn = sendMeme(memePayloads.september);
+        break;
+      case '/memes/wgw':
+        fn = sendMeme(memePayloads.wgw);
         break;
       case '/bday/http501':
         fn = wishBirthday(idDict.http501);
