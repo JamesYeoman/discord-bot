@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ ! -f "/usr/sbin/logrotate" ]]; then
-    echo "Logrotate not found! Installing!"
-    sudo apt-get install logrotate
-fi
-
-if [[ ! -f "/etc/logrotate.d/discordbot.conf" ]]; then
-    echo "Logrotate config not installed! Installing!"
-    sudo cp logrotate.conf /etc/logrotate.d/discordbot.conf
-fi
-
-
 if ! command -v nodenv &> /dev/null; then
     if [[ -d "${HOME}/.nodenv" ]]; then
         echo "Nodenv exists on system, but not setup in shell!"

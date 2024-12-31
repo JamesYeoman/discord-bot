@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'discordbot',
       script: `${__dirname}/dist/main.js`,
+      time: true,
     },
   ],
 };
