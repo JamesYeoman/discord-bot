@@ -25,4 +25,6 @@
 0	8	*	*	3	http GET :8080/memes/wgw
 0	8	*	*	4	http GET :8080/memes/oot
 0	8	*	*	5	http GET :8080/memes/california
-0	17	21	9	*	http GET :8080/memes/september
+0   17  *   *   5   http GET :8080/memes/fridayNight
+0   8   *   *   6   http GET :8080/memes/saturdayMorning
+1	17	21	9	*	http GET :8080/memes/september
