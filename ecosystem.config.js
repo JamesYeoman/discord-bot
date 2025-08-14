@@ -1,7 +1,7 @@
 export const apps = [
   {
     name: 'discordbot',
-    script: `${__dirname}/dist/main.js`,
+    script: `${import.meta.dirname}/dist/main.js`,
     time: true,
   },
 ];
