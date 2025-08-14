@@ -1,6 +1,6 @@
-import type { RequestHandler } from '../types';
+import type { RequestHandler } from '../types.js';
 
-import { getHentaiThread, vlcMediaPlayer } from '../utils';
+import { getHentaiThread, vlcMediaPlayer } from '../utils.js';
 
 export const wishBirthday =
   (userID: string): RequestHandler =>

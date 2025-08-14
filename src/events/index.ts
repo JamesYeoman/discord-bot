@@ -1,12 +1,6 @@
-import type { Awaitable, ClientEvents } from 'discord.js';
+import type { EventType } from '../types.js';
 
-import ready from './on_ready';
-
-export interface EventType<T extends keyof ClientEvents> {
-  name: T;
-  once: boolean;
-  execute: (...args: ClientEvents[T]) => Awaitable<void>;
-}
+import ready from './on_ready.js';
 
 // Gotta work around Typescript here, if I want auto registration
 // of the events...

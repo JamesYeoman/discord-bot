@@ -1,37 +1,11 @@
-import type { RequestHandler } from '../types';
+import type { RequestHandler } from '../types.js';
 import type { Client } from 'discord.js';
 import type { RequestListener } from 'http';
 
-import { idDict } from '../utils';
-import { wishBirthday } from './bday';
-import { sendMeme } from './sendMeme';
-
-const MEME_CACHE_CHANNEL = 'https://cdn.discordapp.com/attachments/1076878871980425256';
-const memePayloads = {
-  california: {
-    media: `${MEME_CACHE_CHANNEL}/1076879247232209006/today_is_friday_in_california.mp4`,
-  },
-  fridayNight: {
-    caption: "The week's work is away, so now it's time to play",
-    media: `${MEME_CACHE_CHANNEL}/1405608020284670163/Friday_Night_Fistcuffs_Intro.mp4`,
-  },
-  saturdayMorning: {
-    caption: 'b;ame finny for ghis ome... tpp esrly...',
-    media: `${MEME_CACHE_CHANNEL}/1405191327028875375/Saturday_Morning_Scrublords_Intro.mp4`,
-  },
-  oot: {
-    caption: 'Happy Out Of Touch Thursday',
-    media: `${MEME_CACHE_CHANNEL}/1076878934114832384/out_of_touch.mp4`,
-  },
-  september: {
-    caption: 'Do you remember? The 21st night of September?',
-    media: 'https://www.youtube.com/watch?v=3RcGCRTD7sA',
-  },
-  wgw: {
-    caption: 'White Girl Wednesday',
-    media: 'https://tenor.com/view/ookami-mio-meme-gif-24268471',
-  },
-};
+import { idDict } from '../utils.js';
+import { wishBirthday } from './bday.js';
+import { sendMeme } from './sendMeme.js';
+import memePayloads from './meme_payloads.json' with { type: 'json' };
 
 const handler =
   (client: Client): RequestListener =>

@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "commonjs",
+    "target": "es2020",
+    "module": "nodenext",
+    
     "outDir": "./dist/",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "importHelpers": true,
     "experimentalDecorators": true,
     "isolatedModules": true,
@@ -14,7 +15,6 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
-    "typeRoots": ["node_modules/@types"],
     "sourceMap": false,
   },
   "include": ["./src/**/*.ts"],

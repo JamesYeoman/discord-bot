@@ -2,7 +2,7 @@ import type { Client } from 'discord.js';
 
 import { ChannelType } from 'discord.js';
 
-import { faod, vlcmediaplayer as vlc } from './discord_ids.json';
+import channels from './discord_ids.json' with { type: 'json' };
 
 export const idDict = {
   http501: '153948164670357504',
@@ -27,15 +27,15 @@ const getTextChannelById = async (client: Client, channel: channelInfo) => {
 };
 
 export const vlcMediaPlayer = {
-  id: vlc.channel.default.id,
-  name: vlc.channel.default.name,
-  guild: vlc.guild,
+  id: channels.vlcmediaplayer.channel.default.id,
+  name: channels.vlcmediaplayer.channel.default.name,
+  guild: channels.vlcmediaplayer.guild,
 };
 
 export const fatAndOrDangerous = {
-  id: faod.channel.default.id,
-  name: faod.channel.default.name,
-  guild: faod.guild,
+  id: channels.faod.channel.default.id,
+  name: channels.faod.channel.default.name,
+  guild: channels.faod.guild,
 };
 
 export const getHentaiThread = (client: Client) =>

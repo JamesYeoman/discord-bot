@@ -3,8 +3,8 @@ import http from 'http';
 
 import { Client, GatewayIntentBits, Partials } from 'discord.js';
 
-import events from './events';
-import handler from './misc/server';
+import events from './events/index.js';
+import handler from './misc/server.js';
 
 console.info('Bot is starting...');
 const client = new Client({
