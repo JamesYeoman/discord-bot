@@ -5,5 +5,14 @@
   "printWidth": 90,
   "tabWidth": 2,
   "bracketSameLine": true,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "./crontab_entries.txt",
+      "options": {
+        "tabWidth": 4,
+        "useTabs": true
+      }
+    }
+  ]
 }
