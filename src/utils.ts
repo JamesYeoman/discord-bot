@@ -19,10 +19,6 @@ const getTextChannelById = async (client: Client, channel: channelInfo) => {
     throw `${channel.id} is not a text channel!`;
   }
 
-  if (maybeChannel.name !== channel.name) {
-    throw `${channel.id} is not the ${channel.name} channel!`;
-  }
-
   return maybeChannel;
 };
 
